@@ -115,10 +115,13 @@ var OTSubscriber = function (_Component) {
         this.setState({ subscriber: null });
         return;
       }
-
-      var container = document.createElement('div');
-      container.setAttribute('class', 'OTSubscriberContainer');
-      this.node.appendChild(container);
+      var properties = this.props.properties || {};
+      var container = void 0;
+      if (properties.insertDefaultUI !== false) {
+        container = document.createElement('div');
+        container.setAttribute('class', 'OTSubscriberContainer');
+        this.node.appendChild(container);
+      }
 
       this.subscriberId = (0, _uuid2.default)();
       var subscriberId = this.subscriberId;
